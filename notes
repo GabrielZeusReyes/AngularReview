@@ -1,0 +1,4 @@
+App
+    Module (one or more, can be imported or exported)
+        Components (controls the view, html + class)
+        Services (business logic)

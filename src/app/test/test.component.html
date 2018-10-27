@@ -1,0 +1,9 @@
+<p id="{{ myID2 }}" [class]="successClass">{{ message }}</p>
+<p [id]="myID">{{ greetMethod() }}</p>
+<!-- use property binding to edit -->
+<input type="text" [disabled]="isDisabled" value="{{ name }}">
+<!-- Conditional classes -->
+<p [class.text-danger]="hasError">Conditional classes</p>
+
+<!-- how about multiple conditional classes? -->
+<p [ngClass]="messageClasses">Multiple conditional classes?</p>
