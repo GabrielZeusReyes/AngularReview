@@ -20,6 +20,8 @@ export class TestComponent implements OnInit {
     'text-danger': this.hasError,
     'text-special': this.isSpecial
   };
+  public greetings: string = '';
+  public fullName: string = 'asdas';
   constructor() { }
 
   ngOnInit() {
@@ -28,6 +30,15 @@ export class TestComponent implements OnInit {
   // method
   greetMethod(): string {
     return 'Hello this is a method!';
+  }
+
+  callClick(event) {
+    console.log(event);
+    this.greetings = `Hello! I'm from a clicked event!`;
+  }
+
+  logMessage(el) {
+    console.log(el.value);
   }
 
 }

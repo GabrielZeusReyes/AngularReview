@@ -1,5 +1,6 @@
 <p id="{{ myID2 }}" [class]="successClass">{{ message }}</p>
 <p [id]="myID">{{ greetMethod() }}</p>
+
 <!-- use property binding to edit -->
 <input type="text" [disabled]="isDisabled" value="{{ name }}">
 <!-- Conditional classes -->
@@ -7,3 +8,20 @@
 
 <!-- how about multiple conditional classes? -->
 <p [ngClass]="messageClasses">Multiple conditional classes?</p>
+
+<!-- event handler -->
+<button (click)="callClick($event)">Click me for an event!</button>
+<p>{{ greetings }}</p>
+
+<!-- template reference variable  -->
+<input #myInput type="text">
+<br>
+<button (click)="logMessage(myInput)">Log my input</button>
+<br>
+<br>
+
+<!-- two way data binding -->
+<!-- before ngModel to work, we must import FormsModule on app.moduele.ts -->
+<!-- then add the module on the imports section -->
+<input type="text" [(ngModel)]="fullName" >
+<p>{{ fullName }}</p>
