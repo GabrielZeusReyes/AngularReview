@@ -1,0 +1,21 @@
+What is a service?
+    A class with a specific purpose
+
+    1. Share data
+    2. Implement application logic
+    3. External Insteraction like connecting to a database
+
+    Naming convestion - .service.ts
+
+Dependency Injection
+    is a coding pattern in which a class receives its dependencies from external sources rather than creating them itself.
+
+Step 1
+    generate service -> ng g s <name>
+
+Step 2 
+    register the servie with Injector
+        go to app.module
+
+Step 3 
+    declare as dependency on the components that needed it
