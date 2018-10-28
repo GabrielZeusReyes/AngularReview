@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IEmployee } from './employee';
 
 // tells angular that this service might itself have injected dependencies
 @Injectable({
@@ -6,14 +9,13 @@ import { Injectable } from '@angular/core';
 })
 export class EmployeeService {
 
-  constructor() { }
+  private _url: string = 'https://jsonplaceholder.typicode.com/users';
 
-  getEmployees(): Array<any> {
-    return [
-      { 'id': 1, 'name': 'Andrew', 'age': 30 },
-      { 'id': 2, 'name': 'Brandon', 'age': 25 },
-      { 'id': 3, 'name': 'Christina', 'age': 26 },
-      { 'id': 4, 'name': 'Elena', 'age': 28 }
-    ];
+  constructor(private http: HttpClient) { }
+
+  // type observable that has an interface of IEmployee that is an array
+  getEmployees(): Observable<IEmployee[]> {
+    // add a type to the get request: an array of IEmployee inerface
+    return this.http.get<IEmployee[]>(this._url);
   }
 }
