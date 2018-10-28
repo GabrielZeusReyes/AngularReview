@@ -3,5 +3,6 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <app-test></app-test>
+  <app-test (childEvent)="message=$event" [parentData]="title"></app-test>
+  <p>{{ message }}</p>
 </div>

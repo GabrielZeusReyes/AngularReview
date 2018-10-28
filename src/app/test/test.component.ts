@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-test',
@@ -22,6 +22,20 @@ export class TestComponent implements OnInit {
   };
   public greetings: string = '';
   public fullName: string = 'asdas';
+  public isShowing: boolean = true;
+  public color: string = '';
+  public listofUsers: Array<any> = [
+    { fname: 'John', lname: 'Smith', age: '28' },
+    { fname: 'Jane', lname: 'Doe', age: '26' },
+    { fname: 'Juan', lname: 'Dela Cruz', age: '24' },
+  ];
+  public date = new Date;
+
+  // pass data from child component to parent component
+  @Output() public childEvent = new EventEmitter();
+
+  @Input() public parentData: string;
+
   constructor() { }
 
   ngOnInit() {
@@ -37,8 +51,16 @@ export class TestComponent implements OnInit {
     this.greetings = `Hello! I'm from a clicked event!`;
   }
 
-  logMessage(el) {
+  logMessage(el: any) {
     console.log(el.value);
+  }
+
+  toggleMe() {
+    this.isShowing = !this.isShowing;
+  }
+
+  fireEvent() {
+    this.childEvent.emit('Hey parent! - from child.');
   }
 
 }

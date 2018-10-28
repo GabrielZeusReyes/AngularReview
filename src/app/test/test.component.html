@@ -3,6 +3,7 @@
 
 <!-- use property binding to edit -->
 <input type="text" [disabled]="isDisabled" value="{{ name }}">
+
 <!-- Conditional classes -->
 <p [class.text-danger]="hasError">Conditional classes</p>
 
@@ -20,8 +21,95 @@
 <br>
 <br>
 
-<!-- two way data binding -->
+<!-- Two way data binding -->
 <!-- before ngModel to work, we must import FormsModule on app.moduele.ts -->
 <!-- then add the module on the imports section -->
 <input type="text" [(ngModel)]="fullName" >
 <p>{{ fullName }}</p>
+
+<!-- Structural Directives -->
+
+<!-- *ngIf -->
+<!-- you can also add `then` -->
+<p *ngIf="isShowing; else elseBlock">Toggle me!</p>
+<ng-template #elseBlock>
+    <p>I'm just showing if 'else' is succesfull!</p>
+</ng-template>
+<button (click)="toggleMe()">Toggle!</button>
+<br><br>
+
+<!-- [ngSwitch] -->
+<input type="text" [(ngModel)]="color" placeholder="Pick a color">
+<div [ngSwitch]="color">
+    <div *ngSwitchCase="'red'"><p>You picked red color</p></div>
+    <div *ngSwitchCase="'blue'"><p>You picked blue color</p></div>
+    <div *ngSwitchCase="'green'"><p>You picked green</p></div>
+    <div *ngSwitchDefault><p>Pick a color from red, blue and green!</p></div>
+</div>
+
+<!-- *ngFor -->
+<p>Looping data!</p>
+<!--
+    index
+    can be used in ngIf:
+        first
+        last
+        even
+        odd
+-->
+<ul>
+    <li *ngFor="let user of listofUsers; index as i; first as f; last as l; even as e; odd as o;">
+        Hi {{ user.fname }} {{ user.lname }}, you are {{ user.age }} years old. <br><br> 
+        The index is {{ i }} <br><br>
+        Is this the first element? {{ f }} <br><br>
+        Is this the last element? {{ l }} <br><br>
+        Is this even? {{ e }} <br><br>
+        Is this odd? {{ o }} <br><br><br>
+    </li>
+</ul>
+
+<!-- Input Output / Component Interaction -->
+
+<!-- this data is from the app component to test component -->
+<p>The title of the app is {{ parentData }}.</p>
+
+<!-- send a data from child to parent component -->
+<button (click)="fireEvent()">Send to Parent!</button>
+
+
+<!-- Pipes -->
+<!-- 
+    String property type:
+        uppercase
+        lowercase
+        titlecase - every first letter or the word will be capitalized
+        slice - e.g slice:3 -> starts with index 3
+                    slice.3:5 -> starts with index 3 but don't include the 5th index
+        json
+    
+    Number property type:
+        number - e.g number:1.2-3
+                            1 -> minimum number of integer digits
+                            2 -> minimum number of decimal digits
+                            3 -> maximum number of decimal digits
+        percent
+        currency - default is US dollars
+                 - to specify currency e.g currency: 'GBP'
+                 - if you want the code and not the special character, do this: currency: 'GBP': 'code'
+
+    Date property types
+        date:<format> 
+            - 'short'
+            - 'shortDate'
+            - 'shortTime'
+            - 'medium'
+            - 'long'
+ -->
+<p>{{ parentData | slice:3 }}</p>
+<p>{{ listofUsers | json }}</p>
+<p> {{ 5.678 | number:'1.2-3' }} </p>
+<p> {{ 5.678 | number:'3.4-5' }} </p>
+<p> {{ 5.678 | number:'3.1-2' }} </p>
+<p> {{ 0.25 | percent }} </p>
+<p> {{ 0.25 | currency: 'GBP': 'code' }} </p>
+<p>{{ date | date:'medium' }}</p>
