@@ -1,6 +1,8 @@
 <h2>Employee Detail</h2>
+<p>You selected: {{ employeeID }}</p>
+<a (click)="goPrev()" >Previous</a>
+<a (click)="goNext()">Next</a>
 <h3>{{ errorMsg }}</h3>
 <ul *ngFor="let employee of employees">
   <li>{{ employee.id }}. {{ employee.name }} - {{ employee.username }}</li>
 </ul>
-<p>{{ employeeID }}</p>
