@@ -7,12 +7,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   {
+    path: '', redirectTo: '/details', pathMatch: 'full'
+  },
+  {
     path: 'details', component: EmployeeDetailComponent
   },
   {
     path: 'employees', component: EmployeeListComponent
   },
-  {
+  { // wild card route should always be last
     path: '**', component: PageNotFoundComponent
   }
 ];
