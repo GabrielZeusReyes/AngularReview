@@ -3,20 +3,22 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 
 import { EmployeeService } from './employee.service';
+
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeListComponent,
-    EmployeeDetailComponent
+    routingComponents,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

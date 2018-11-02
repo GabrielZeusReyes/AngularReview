@@ -1,8 +1,9 @@
-Steps on making http request and observables
-
-    1. import httpclientmodule on the app.module.ts
-    2, inject the httpclient on the service file
-        get the request
-    3. create an interface
-    4. cast the interface on the service file
-    5. go to the components, subscribe to the observables
+Routing
+    open index.html and add <base href="/">
+    create a file under app folder name: app-routing.module.ts
+        type ng generate module app-routing --flat --module=app
+        import RouterModule and Routes and add it to exports
+    configure the routes on app-routing.module.ts
+    export all the components so that app.module can use it
+    import the configured routes by typing this [ RouterModule.forRoot(routes) ] under the imports array
+    add <router-outlet> tag on the app.component.html
