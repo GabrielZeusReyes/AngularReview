@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EmployeeService } from '../employee.service';
-import { Router} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -13,11 +13,11 @@ export class EmployeeListComponent implements OnInit {
   public employees: Array<any>;
   public errorMsg: any;
 
-  constructor(private _employeeService: EmployeeService, private router: Router) { }
+  constructor(private _employeeService: EmployeeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this._employeeService.getEmployees()
-      .subscribe(
+      .subscribe (
         (data: any) => this.employees = data,
         (error: any) => this.errorMsg = error
       );

@@ -38,11 +38,17 @@ export class EmployeeDetailComponent implements OnInit {
   goPrev() {
     const previousID = this.employeeID - 1;
     this.router.navigate(['/details', previousID]);
+    // this.router.navigate([previousID], { relativeTo: this.route });
   }
 
   goNext() {
     const nextID = this.employeeID + 1;
     this.router.navigate(['/details', nextID]);
+    // this.router.navigate([nextID], { relativeTo: this.route });
+  }
+
+  goChild() {
+    this.router.navigate( ['child'], { relativeTo: this.route } );
   }
 
 }

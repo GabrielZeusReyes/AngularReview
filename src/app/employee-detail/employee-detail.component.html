@@ -1,8 +1,10 @@
 <h2>Employee Detail</h2>
 <p>You selected: {{ employeeID }}</p>
-<a (click)="goPrev()" >Previous</a>
-<a (click)="goNext()">Next</a>
+<button (click)="goPrev()" >Previous</button>
+<button (click)="goNext()">Next</button>
+<button (click)="goChild()">Open Child!</button>
 <h3>{{ errorMsg }}</h3>
 <ul *ngFor="let employee of employees">
   <li>{{ employee.id }}. {{ employee.name }} - {{ employee.username }}</li>
 </ul>
+<router-outlet></router-outlet>

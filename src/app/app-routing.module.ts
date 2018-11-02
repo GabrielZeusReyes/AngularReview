@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EmployeeChildComponent } from './employee-child/employee-child.component';
 
 const routes: Routes = [
   { // default route
@@ -13,7 +14,11 @@ const routes: Routes = [
     path: 'details', component: EmployeeDetailComponent
   },
   {
-    path: 'details/:id', component: EmployeeDetailComponent
+    path: 'details/:id',
+    component: EmployeeDetailComponent,
+    children: [
+      { path: 'child', component: EmployeeChildComponent }
+    ]
   },
   {
     path: 'employees', component: EmployeeListComponent
@@ -30,4 +35,4 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 // this is used on the app.module so that it is cleaner
-export const routingComponents = [EmployeeDetailComponent, EmployeeListComponent, PageNotFoundComponent];
+export const routingComponents = [EmployeeDetailComponent, EmployeeListComponent, PageNotFoundComponent, EmployeeChildComponent];

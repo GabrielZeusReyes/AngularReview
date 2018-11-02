@@ -8,12 +8,14 @@ import { EmployeeService } from './employee.service';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EmployeeChildComponent } from './employee-child/employee-child.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EmployeeChildComponent
   ],
   imports: [
     BrowserModule,
