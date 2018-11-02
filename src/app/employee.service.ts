@@ -1,7 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { IEmployee } from './employee';
+
+import { catchError } from 'rxjs/operators';
 
 // tells angular that this service might itself have injected dependencies
 @Injectable({
@@ -16,6 +18,10 @@ export class EmployeeService {
   // type observable that has an interface of IEmployee that is an array
   getEmployees(): Observable<IEmployee[]> {
     // add a type to the get request: an array of IEmployee inerface
-    return this.http.get<IEmployee[]>(this._url);
+    return this.http.get<IEmployee[]>(this._url).pipe( catchError( this.errorHandler ) );
+  }
+
+  errorHandler(err: HttpErrorResponse) {
+    return throwError( err.message || 'Server Error' );
   }
 }
